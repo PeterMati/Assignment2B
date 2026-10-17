@@ -85,4 +85,68 @@
     }
     return errors;
   }
+
+  sensorsForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const formData = {
+      id: crypto.randomUUID(),
+      name: inputName.value,
+      ph: parseFloat(inputPh.value),
+      ec: parseFloat(inputEc.value),
+      temp: parseFloat(inputTemp.value),
+      rh: parseFloat(inputRh.value),
+      timestamp: new Date().toLocaleDateString([], {
+        hour: "2-digit",
+        minute: "2-digit",
+      }),
+    };
+
+    const validationErrors = validateInput(formData);
+
+    if (validationErrors.length > 0) {
+      displayError(validationErrors.join(" "));
+      return;
+    }
+
+    hideError();
+
+    formData.risk = evaluateRisk(
+      formData.ph,
+      formData.ec,
+      formData.temp,
+      formData.rh,
+    );
+
+    entries.unshift(formData);
+
+    saveEntries();
+
+    render();
+
+    sensorsForm.reset();
+
+    inputName.focus();
+  });
+
+  entriesList.addEventListener("click", function (event) {
+    const target = event.target;
+    if (target.classList.contains("btn-delete")) {
+      const entryId = target.dataset.id;
+      entries = entries.filter(function (entry) {
+        return entry.id !== entryId;
+      });
+      saveEntries();
+      render();
+    }
+  });
+
+  btnClearAll.addEventListener("click", (event) => {
+    if (entries.length === 0) return;
+    if (confirm("Are you sure you want to delete all current entries?")) {
+      entries = [];
+      saveEntries();
+      render();
+    }
+  });
 });
