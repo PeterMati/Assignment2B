@@ -96,7 +96,7 @@
       ec: parseFloat(inputEc.value),
       temp: parseFloat(inputTemp.value),
       rh: parseFloat(inputRh.value),
-      timestamp: new Date().toLocaleDateString([], {
+      timestamp: new Date().toLocaleTimeString([], {
         hour: "2-digit",
         minute: "2-digit",
       }),
@@ -149,4 +149,60 @@
       render();
     }
   });
-});
+
+  function render() {
+    entryCount.textContent = entries.length;
+
+    if (entries.length === 0) {
+      emptyState.classList.remove("hidden");
+      entriesList.innerHTML = "";
+      return;
+    }
+
+    emptyState.classList.add("hidden");
+
+    const fragment = document.createDocumentFragment();
+
+    entries.forEach(function (rec) {
+      const li = document.createElement("li");
+      li.className = "entry-card status-" + rec.risk.level;
+
+      li.innerHTML = `<div class="card-top">
+            <div>
+                <div class="bay-name-text">${escapeHtml(rec.name)} </div>
+                <div class="timestamp">Logged at ${rec.timestamp} </div>
+                <span class="risk-badge ${rec.risk.level}">${rec.risk.label}</span>
+            </div>
+            <div class="sensor-stats">
+                <div class="stat-item"><span>pH</span>${rec.ph.toFixed(1)} </div>
+                <div class="stat-item"><span>Electrical Conductivity (EC)</span>${rec.ec.toFixed(1)} mS/cm </div>
+                <div class="stat-item"><span>Temperature</span>${rec.temp.toFixed(1)} °F </div>
+                <div class="stat-item"><span>Relative Humidity (RH)</span>${rec.rh.toFixed(1)} % </div>
+            </div>
+            <button class="btn btn-outline-danger btn-sm btn-delete" data-id="${rec.id}">Delete Entry </button>
+        </div>`;
+
+      fragment.appendChild(li);
+    });
+
+    entriesList.innerHTML = "";
+    entriesList.appendChild(fragment);
+  }
+
+  function displayError(message) {
+    errorBanner.textContent = message;
+    errorBanner.classList.remove("hidden");
+  }
+
+  function hideError() {
+    errorBanner.textContent = "";
+    errorBanner.classList.add("hidden");
+  }
+
+  function escapeHtml(str) {
+    return str
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;");
+  }
+})();
