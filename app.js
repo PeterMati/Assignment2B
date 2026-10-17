@@ -57,7 +57,7 @@
       rh >= 50 &&
       rh <= 70
     ) {
-      return { level: "optimal", label: "Optimal" };
+      return { level: "normal", label: "Optimal" };
     }
 
     return { level: "warning", label: "Warning" };
@@ -171,13 +171,14 @@
             <div>
                 <div class="bay-name-text">${escapeHtml(rec.name)} </div>
                 <div class="timestamp">Logged at ${rec.timestamp} </div>
-                <span class="risk-badge ${rec.risk.level}">${rec.risk.label}</span>
+            </div>
+            <span class="risk-badge ${rec.risk.level}">${rec.risk.label}</span>
             </div>
             <div class="sensor-stats">
                 <div class="stat-item"><span>pH</span>${rec.ph.toFixed(1)} </div>
-                <div class="stat-item"><span>Electrical Conductivity (EC)</span>${rec.ec.toFixed(1)} mS/cm </div>
+                <div class="stat-item"><span>Electrical Conductivity</span>${rec.ec.toFixed(1)} mS/cm </div>
                 <div class="stat-item"><span>Temperature</span>${rec.temp.toFixed(1)} °F </div>
-                <div class="stat-item"><span>Relative Humidity (RH)</span>${rec.rh.toFixed(1)} % </div>
+                <div class="stat-item"><span>Relative Humidity</span>${rec.rh.toFixed(1)} % </div>
             </div>
             <button class="btn btn-outline-danger btn-sm btn-delete" data-id="${rec.id}">Delete Entry </button>
         </div>`;

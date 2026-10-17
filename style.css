@@ -262,14 +262,17 @@ body {
 
 .risk-badge.critical {
   background: var(--danger);
+  color: #000;
 }
 
 .risk-badge.warning {
   background: var(--warning);
+  color: #000;
 }
 
 .risk-badge.normal {
   background: var(--success);
+  color: #000;
 }
 
 .sensor-stats {
