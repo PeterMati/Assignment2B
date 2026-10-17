@@ -94,7 +94,6 @@ body {
 .form-group {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   gap: 0.35rem;
   margin-bottom: 1.1rem;
 }
@@ -169,4 +168,130 @@ body {
 .btn-outline-danger:hover {
   background-color: var(--danger);
   color: #fff;
+}
+
+.alert {
+  padding: 0.75rem 1rem;
+  border-radius: 6rem;
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+}
+
+.alert-danger {
+  background-color: rgba(239, 68, 68, 0.15);
+  border: 1px solid var(--danger);
+  color: #fca5a5;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: var(--text-muted);
+}
+
+.empty-icon {
+  font-size: 2.5rem;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.entries-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.25rem;
+}
+
+.entries-grid {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1rem;
+}
+
+.entry-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-top: 5px solid var(--border-color);
+  border-radius: 6px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.entry-card.status-critical {
+  border-color-top: var(--danger);
+}
+
+.entry-card.status-warning {
+  border-color-top: var(--warning);
+}
+
+.entry-card.status-normal {
+  border-color-top: var(--success);
+}
+
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.bay-name-text {
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+.timestamp {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.risk-badge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.15rem 0.5rem;
+  border-radius: 9999px;
+  text-transform: uppercase;
+}
+
+.risk-badge.critical {
+  background: var(--danger);
+}
+
+.risk-badge.warning {
+  background: var(--warning);
+}
+
+.risk-badge.normal {
+  background: var(--success);
+}
+
+.sensor-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+  background-color: rgba(15, 43, 26, 0.4);
+  padding: 0.6rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+}
+
+.stat-item span {
+  color: var(--text-muted);
+  display: block;
+  font-size: 0.75rem;
+}
+
+.site-footer {
+  border-top: 1px solid var(--border-color);
+  padding: 1rem 2rem;
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--text-muted);
 }
