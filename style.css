@@ -225,15 +225,15 @@ body {
 }
 
 .entry-card.status-critical {
-  border-color-top: var(--danger);
+  border-top-color: var(--danger);
 }
 
 .entry-card.status-warning {
-  border-color-top: var(--warning);
+  border-top-color: var(--warning);
 }
 
 .entry-card.status-normal {
-  border-color-top: var(--success);
+  border-top-color: var(--success);
 }
 
 .card-top {
