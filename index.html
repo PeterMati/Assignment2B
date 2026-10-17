@@ -15,7 +15,7 @@
           <h1>Smart Agriculture</h1>
         </div>
         <div class="header-status">
-          Current Entries: <span id="entry-count" class="entry-count">0</span>
+          Active Entries: <span id="entry-count" class="entry-count">0</span>
         </div>
       </div>
     </header>
@@ -123,6 +123,25 @@
           </button>
         </form>
       </section>
+
+      <section class="panel entries-panel">
+        <div class="entries-header">
+          <h2 class="panel-title">Current Entries</h2>
+          <button id="btn-clear-all" class="btn btn-outline-danger btn-sm">
+            Delete All
+          </button>
+        </div>
+
+        <div id="empty-state" class="empty-state">
+          <span class="empty-icon">📋</span>
+          <p>There are currently no entries recorded.</p>
+        </div>
+
+        <ul id="entries-list" class="entries-grid" aria-live="polite"></ul>
+      </section>
     </main>
+    <footer class="site-footer">
+      <p>&copy; Project 2 for CSI 3150 F2026.</p>
+    </footer>
   </body>
 </html>
